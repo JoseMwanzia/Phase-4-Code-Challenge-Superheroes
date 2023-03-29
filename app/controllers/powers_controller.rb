@@ -16,11 +16,11 @@ class PowersController < ApplicationController
 
     def update
         power = Power.find(params[:id])
-        if power 
+        if power.valid?
         power.update(user_params)
         render json: power, status: :created
         else 
-            render json: {error: "validation errors"}, status: :unauthorized
+            render json: {errors: power.errors}, status: :unauthorized
         end
     end
 end
