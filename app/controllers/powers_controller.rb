@@ -6,7 +6,7 @@ class PowersController < ApplicationController
     end
 
     def show
-        power = Power.find(parms[:id])
+        power = Power.find_by(id: parms[:id])
         if power 
             render json: power,status: :ok
         else
